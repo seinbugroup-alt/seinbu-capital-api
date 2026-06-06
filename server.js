@@ -15,6 +15,9 @@ const { v4: uuidv4 } = require("uuid");
 const app  = express();
 const PORT = process.env.PORT || 4000;
 
+// Trust Railway proxy
+app.set('trust proxy', 1);
+
 // ── SECURITY ─────────────────────────────────────────────────────
 app.use(helmet());
 app.use(cors({
