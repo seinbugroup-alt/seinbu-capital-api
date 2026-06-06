@@ -152,7 +152,7 @@ app.post("/bonds/subscribe", requirePiAuth, async (req, res) => {
 });
 
 // Approve payment (called by Pi SDK callback)
-app.post("/payments/approve", requirePiAuth, async (req, res) => {
+app.post("/payments/approve", async (req, res) => {
   try {
     const { paymentId } = req.body;
     if (!paymentId) return res.status(400).json({ error: "paymentId requis" });
@@ -174,7 +174,7 @@ app.post("/payments/approve", requirePiAuth, async (req, res) => {
 });
 
 // Complete payment (called after blockchain confirmation)
-app.post("/payments/complete", requirePiAuth, async (req, res) => {
+app.post("/payments/complete", async (req, res) => {
   try {
     const { paymentId, txid } = req.body;
     if (!paymentId || !txid) return res.status(400).json({ error: "paymentId et txid requis" });
